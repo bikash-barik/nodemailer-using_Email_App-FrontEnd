@@ -7,6 +7,7 @@ import Nav from "./Componets/Nav";
 import EmailSand from "./Componets/EmailSand";
 import ValidEmailsPart from "./Componets/ValidEmailsPart";
 import DoaminCountry from "./Componets/DoaminCountry";
+import EmailExtract from "./Componets/EmailExtract";
 function App() {
   return (
     <>
@@ -17,6 +18,7 @@ function App() {
             <Switch>
               <Route exact path="/" component={Home} />
               <Route exact path="/EmailSand" component={EmailSand} />
+              <Route exact path="/EmailExtract" component={EmailExtract} />
               <Route  path="/EmailValidator" component={ValidEmailsPart} />
               <Route  path="/DomainCountry" component={DoaminCountry} />
             </Switch>

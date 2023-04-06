@@ -18,6 +18,10 @@ const Nav = () => {
   const EmailSand = () => {
     history.push("/EmailSand")
 }
+
+const EmailExtract = () =>{
+  history.push("/EmailExtract")
+}
   return (
     <div style={{background: "#091E3E"}}>
       
@@ -61,6 +65,11 @@ const Nav = () => {
              
               <li class="nav-item ml-5">
               <button type="button" onClick={EmailCountryName} class="btn btn-light"> Domain Country Name</button>
+             
+              </li>
+              
+              <li class="nav-item ml-5">
+              <button type="button" onClick={EmailExtract} class="btn btn-light">  Extract Emails</button>
              
               </li>
               <li class="nav-item ml-5">

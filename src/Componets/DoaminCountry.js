@@ -1,10 +1,14 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import ReactFlagsSelect from "react-flags-select";
+
 function DoaminCountry() {
   const [file, setFile] = useState(null);
   const [results, setResults] = useState([]);
+  const [filteredResults, setFilteredResults] = useState([]);
+  const [selectedRegion, setSelectedRegion] = useState([]);
   const history = useHistory();
+
   const handleFileChange = (e) => {
     setFile(e.target.files[0]);
   };
@@ -20,7 +24,23 @@ function DoaminCountry() {
     });
     const data = await response.json();
     setResults(data);
+    setFilteredResults(data);
   };
+
+  const handleFilterChange = (e) => {
+    const selectedRegion = e.target.value;
+    setSelectedRegion(selectedRegion);
+    if (selectedRegion === "All") {
+      setFilteredResults(results);
+    } else {
+      const filtered = results.filter(({ country }) => country === selectedRegion);
+      filtered.forEach((domain) => {
+        domain.country = selectedRegion;
+      });
+      setFilteredResults(filtered);
+    }
+  };
+
 
   const EmailSand = () => {
     history.push("/EmailSand");
@@ -50,7 +70,7 @@ function DoaminCountry() {
         </div>
         <hr />
 
-        {results.length > 0 && (
+        {filteredResults.length > 0 && (
           <div>
             <div class="container">
               <div class="row">
@@ -60,7 +80,9 @@ function DoaminCountry() {
                 <div class="col">
                   <h4>
                     Total Domains :
-                    <span className="ml-2 text-success">{results.length} </span>{" "}
+                    <span className="ml-2 text-success">
+                      {filteredResults.length}{" "}
+                    </span>{" "}
                   </h4>
                 </div>
                 <div class="col">
@@ -71,23 +93,20 @@ function DoaminCountry() {
                 </div>
                 <div className="col">
                   <h4>Filter</h4>
-                 
+
                   <select
-              // onChange={(e) => {
-              //   setFilterParam(e.target.value);
-              // }}
-              className=" w-60"
-              aria-label="Filter Countries By Countries"
-            >
-              <option value="All">Filter By Region</option>
-              <option value="India">India</option>
-              <option value="Americas">America</option>
-            </select>
-                
+                    onChange={handleFilterChange}
+                    className=" w-60"
+                    aria-label="Filter Domains By Name"
+                  >
+                    <option value="All">All Domains</option>
+                    <option value="US">USA</option>
+                    <option value="IN">India</option>
+                  </select>
                 </div>
               </div>
 
-              <table class="table table-hover">
+              <table  class="table table-hover">
                 <thead>
                   <tr>
                     <th scope="col">#SL</th>
@@ -96,7 +115,8 @@ function DoaminCountry() {
                   </tr>
                 </thead>
                 <tbody>
-                  {results.map(({ domain, country }, i) => (
+                {results.reverse().map(({ domain, country }, i) => (
+  country === selectedRegion && (
                     <tr key={domain}>
                       <th scope="row">{i + 1}</th>
 
@@ -144,7 +164,8 @@ function DoaminCountry() {
                         )}
                       </td>
                     </tr>
-                  ))}
+                )
+                ))}
                 </tbody>
               </table>
             </div>
