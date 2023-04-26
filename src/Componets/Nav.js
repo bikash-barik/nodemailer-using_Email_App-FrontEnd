@@ -2,34 +2,31 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 
 const Nav = () => {
-
-
   const history = useHistory();
-  
-  
-  const EmailCountryName = () => {
-    history.push("/DomainCountry")
-}
 
+  const EmailCountryName = () => {
+    history.push("/DomainCountry");
+  };
 
   const EmailValidator = () => {
-      history.push("/EmailValidator")
-  }
+    history.push("/EmailValidator");
+  };
   const EmailSand = () => {
-    history.push("/EmailSand")
-}
+    history.push("/EmailSand");
+  };
 
-const EmailExtract = () =>{
-  history.push("/EmailExtract")
-}
+  const EmailExtract = () => {
+    history.push("/EmailExtract");
+  };
   return (
-    <div style={{background: "#091E3E"}}>
-      
-
-      <nav class="navbar navbar-expand-lg navbar  container bg-body-tertiary" style={{background: "#091E3E"}}>
+    <div style={{ background: "#091E3E" }}>
+      <nav
+        class="navbar navbar-expand-lg navbar  container bg-body-tertiary"
+        style={{ background: "#091E3E" }}
+      >
         <div class="container-fluid">
           <a class="navbar-brand text-white" href="/">
-           App
+            App
           </a>
 
           <button
@@ -43,10 +40,11 @@ const EmailExtract = () =>{
           >
             <span class="navbar-toggler-icon"></span>
           </button>
-          <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarNavDropdown">
+          <div
+            class="collapse navbar-collapse d-flex justify-content-between"
+            id="navbarNavDropdown"
+          >
             <ul class="navbar-nav ">
-              
-              
               <li class="nav-item">
                 <form class="d-flex" role="search">
                   <input
@@ -60,39 +58,58 @@ const EmailExtract = () =>{
                   </button>
                 </form>
               </li>
-              
-              </ul><ul className="navbar-nav ">
-             
+            </ul>
+            <ul className="navbar-nav ">
               <li class="nav-item ml-5">
-              <button type="button" onClick={EmailCountryName} class="btn btn-light"> Domain Country Name</button>
-             
+                <button
+                  type="button"
+                  onClick={EmailCountryName}
+                  class="btn btn-light"
+                >
+                  {" "}
+                  Domain Country Name
+                </button>
               </li>
-              
+
               <li class="nav-item ml-5">
-              <button type="button" onClick={EmailExtract} class="btn btn-light">  Extract Emails</button>
-             
+                <button
+                  type="button"
+                  onClick={EmailExtract}
+                  class="btn btn-light"
+                >
+                  {" "}
+                  Extract Emails
+                </button>
               </li>
               <li class="nav-item ml-5">
-              <button type="button" onClick={EmailValidator} class="btn btn-light"> Email Validate</button>
-             
+                <button
+                  type="button"
+                  onClick={EmailValidator}
+                  class="btn btn-light"
+                >
+                  {" "}
+                  Email Validate
+                </button>
               </li>
               <li class="nav-item ml-5">
-              <button type="button" onClick={EmailSand} class="btn btn-light">  Sand Emails</button>
-             
+                <button type="button" onClick={EmailSand} class="btn btn-light">
+                  {" "}
+                  Sand Emails
+                </button>
               </li>
               <li class="nav-item ml-5">
-              <button type="button"  class="btn btn-light">Login</button>
-             
+                <button type="button" class="btn btn-light">
+                  Login
+                </button>
               </li>
               <li class="nav-item ml-5">
-              <button type="button"  class="btn btn-light">Signup</button>
-             
+                <button type="button" class="btn btn-light">
+                  Signup
+                </button>
               </li>
             </ul>
           </div>
-          <div>
-            
-          </div>
+          <div></div>
         </div>
       </nav>
     </div>

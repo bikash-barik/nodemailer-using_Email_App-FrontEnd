@@ -2,7 +2,10 @@ import React, { useState } from "react";
 import axios from "axios";
 import { io } from "socket.io-client";
 import "./Style.css";
-const socket = io("http://localhost:3000/");
+import URLAPI from "../API/URLAPI";
+
+const socket = io(`${URLAPI}`);
+
 
 function EmailSand() {
   const [subject, setSubject] = useState("");
@@ -35,7 +38,7 @@ function EmailSand() {
       formData.append("domainList", domainList);
 
       const response = await axios.post(
-        "http://localhost:3000/upload",
+        `${URLAPI}/upload`,
         formData
       );
       console.log(response.data);

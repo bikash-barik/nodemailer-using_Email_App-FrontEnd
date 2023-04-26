@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import URLAPI from "../API/URLAPI";
 
 function App() {
   const [file, setFile] = useState(null);
@@ -14,7 +15,7 @@ function App() {
     const formData = new FormData();
     formData.append("domainList", file);
 
-    const response = await fetch("http://localhost:3000/extract-emails", {
+    const response = await fetch(`${URLAPI}/extract-emails`, {
       method: "POST",
       body: formData,
     });

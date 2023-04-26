@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import ReactFlagsSelect from "react-flags-select";
+import URLAPI from "../API/URLAPI";
 
 function DoaminCountry() {
   const [file, setFile] = useState(null);
@@ -18,7 +19,7 @@ function DoaminCountry() {
     if (!file) return;
     const formData = new FormData();
     formData.append("domainList", file);
-    const response = await fetch("http://localhost:3000/domains", {
+    const response = await fetch(`${URLAPI}/domains`, {
       method: "POST",
       body: formData,
     });

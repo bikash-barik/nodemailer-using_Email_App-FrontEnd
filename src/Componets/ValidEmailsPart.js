@@ -1,6 +1,8 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
+import URLAPI from "../API/URLAPI";
+
 
 function ValidEmailsPart() {
   const [response, setResponse] = useState(null);
@@ -13,7 +15,7 @@ function ValidEmailsPart() {
     // console.log(domain)
 
     axios
-      .post("http://localhost:3000/validate-emails", formData, {
+      .post(`${URLAPI}/validate-emails`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
