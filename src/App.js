@@ -3,6 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from "./Pages/Home";
+import Home2 from "./Pages/Home2";
 import Nav from "./Componets/Nav";
 import EmailSand from "./Componets/EmailSand";
 import ValidEmailsPart from "./Componets/ValidEmailsPart";
@@ -26,6 +27,7 @@ function App() {
 
 
             </Switch>
+
           </div>
         </div>
       </Router>

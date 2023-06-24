@@ -65,9 +65,9 @@ function DoaminCountry() {
           <button onClick={handleFormSubmit} className="btn btn-primary">
             Submit
           </button>
-          <button onClick={EmailSand} className="btn btn-primary">
+          {/* <button onClick={EmailSand} className="btn btn-primary">
             Next
-          </button>
+          </button> */}
         </div>
         <hr />
 

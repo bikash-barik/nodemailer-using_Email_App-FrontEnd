@@ -64,7 +64,7 @@ function ValidEmailsPart() {
      
       <div className="d-flex justify-content-between">
       <button className="btn btn-primary">Submit</button>
-      <button onClick={EmailSand} className="btn btn-primary">Next</button>
+      {/* <button onClick={EmailSand} className="btn btn-primary">Next</button> */}
       </div>
       <hr />
       {response && (
