@@ -1,0 +1,15 @@
+
+
+.input-form-email-send{
+    background: #C7C7C7 !important;
+    /* box-shadow: 0px 0px 9px 24px rgba(54, 52, 52, 0.14) !important; */
+    border-radius: 50px !important;
+    padding: 2rem;
+    margin-top: 1rem;
+}
+
+
+.input-email-send{
+    margin-top: 2rem;
+    border-radius: 30px !important;
+}

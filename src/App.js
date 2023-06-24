@@ -23,6 +23,8 @@ function App() {
               <Route  path="/EmailValidator" component={ValidEmailsPart} />
               <Route  path="/DomainCountry" component={DoaminCountry} />
               <Route  path="/test" component={Test} />
+
+
             </Switch>
           </div>
         </div>

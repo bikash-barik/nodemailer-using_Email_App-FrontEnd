@@ -3,8 +3,15 @@ import axios from "axios";
 import { io } from "socket.io-client";
 import "./Style.css";
 import URLAPI from "../API/URLAPI";
+import { Container } from "react-bootstrap";
+import { Col, Row,List, Typography } from 'antd';
+import "./EmailSend.css"
+import { Input, Upload , Button } from 'antd';
+import {MailOutlined,LockOutlined, UploadOutlined,CopyOutlined} from '@ant-design/icons';
 
 const socket = io(`${URLAPI}`);
+
+
 
 
 function EmailSand() {
@@ -22,6 +29,15 @@ function EmailSand() {
       domainList,
     };
   };
+
+
+  const data = [
+    'Racing car sprays burning fuel into crowd.',
+    'Japanese princess to wed commoner.',
+    'Australian walks 100km after outback crash.',
+    'Man charged over missing wedding girl.',
+    'Los Angeles battles huge wildfires.',
+  ];
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -66,106 +82,126 @@ function EmailSand() {
   };
 
   return (
-    <section onContextMenu={onRightClick}>
-      <div class="container mt-5 ">
-        <div class="row">
-          <div class="col">
-            <div className="form-container container-child card p-2">
-              <form onSubmit={handleSubmit}>
-                <div className="form-input">
-                  <label htmlFor="emailid">Form Email</label>
-                  <input
-                    type="text"
-                    name="emailid"
-                    id="emailid"
-                    value={emailid}
-                    className=""
-                    onChange={(e) => setEmailid(e.target.value)}
-                  />
-                </div>
-                <div className="form-input">
-                  <label htmlFor="password">Password</label>
-                  <input
-                    type="text"
-                    name="password"
-                    id="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                  />
-                </div>
-                <div className="d-flex">
-                  <div className="form-input">
-                    <label htmlFor="emailList">Email List </label>
-                    <input
-                      type="file"
-                      name="emailList"
-                      id="emailList"
-                      onChange={(e) => setEmailList(e.target.files[0])}
-                    />
-                  </div>
-                  <div className="form-input">
-                    <label htmlFor="domainList">
-                      Domain List According to Email List{" "}
-                    </label>
-                    <input
-                      type="file"
-                      name="DomainList"
-                      id="domainList"
-                      onChange={(e) => setDomainList(e.target.files[0])}
-                    />
-                  </div>
-                </div>
+    <>
+      <Container style={{marginTop:'2rem'}}>
+           <Row justify={"space-between"}>
 
-                <div className="form-input">
-                  <label htmlFor="subject">Subject </label>
-                  <input
-                    type="text"
-                    placeholder="`Re : Domain : ` Please Write After this  "
-                    name="subject"
-                    id="subject"
-                    value={subject}
-                    onChange={(e) => setSubject(e.target.value)}
-                  />
-                </div>
-                <div className="form-input">
-                  <label htmlFor="subject">Email Content </label>
-                  <textarea
-                    type="text"
-                    name="mailContent"
-                    rows="10"
-                    cols="70"
-                    id="mailContent"
-                    value={emailList}
-                    onChange={(e) => setMailContent(e.target.value)}
-                  />
-                </div>
-                <div className="d-flex justify-content-center mt-2">
-                  <button className="btn btn-primary " type="submit">
-                    Submit
-                  </button>
-                </div>
-              </form>
-            </div>
-          </div>
-          <div class="col">
-            <h3>Success</h3>
-            <h4>
-              Total number of recipients:{" "}
-              <span className="ml-2 text-success">
-                0{/* {response.validEmails.length}{" "} */}
-              </span>{" "}
-            </h4>
-            <div className="emails">
-              {/* {#each successRecipient as email, index} */}
-              <p className="text-white">1. Email</p>
-              {/* {/each} */}
-            </div>
-          </div>
-        </div>
+                <Col  xs={24} sm={24} md={10} lg={10} xl={10} className="input-form-email-send"> 
 
-        {/* //table" */}
+                <form onSubmit={handleSubmit}>
+                <Input
+                required
+                name="emailid"
+                id="emailid"
+                value={emailid}
+                onChange={(e) => setEmailid(e.target.value)}
+                className="input-email-send" size="large" placeholder="FORM EMAIL"prefix={<MailOutlined />} />
 
-        <div class="row mt-5">
+    
+                
+                <Input.Password
+                required
+                 name="password"
+                 id="password"
+                 value={password}
+                 onChange={(e) => setPassword(e.target.value)}
+                className="input-email-send" size="large" placeholder="PASSWORD"prefix={<LockOutlined />} />
+
+
+
+
+                <Upload action={'http://localhost:3000/demo'} listType="picture"
+                    required
+                    beforeUpload={(file)=> {
+                        console.log(file);
+                        return false
+                    }}
+
+                    name="emailList"
+                    id="emailList"
+                    onChange={(e) => setEmailList(e.file)}
+                >
+                    <Button className="input-email-send"   fullWidth icon={<UploadOutlined />}>EMAIL LIST</Button>
+                </Upload>
+
+
+                <Upload listType="picture"
+                required
+                    beforeUpload={(file)=> {
+                        console.log(file);
+                        return false
+                    }}
+                    name="DomainList"
+                    id="domainList"
+                    onChange={(e) =>setSubject(e.file)}
+                >
+                    <Button className="input-email-send"   fullWidth icon={<UploadOutlined />}>DOMAIN LIST</Button>
+                </Upload>
+
+                    
+                <Input
+                 name="subject"
+                 required
+                 id="subject"
+                 value={subject}
+                 onChange={(e) => setSubject(e.target.value)}
+                className="input-email-send" size="large" placeholder="SUBJECT"prefix={<CopyOutlined />} />
+
+                <Input.TextArea
+                className="input-email-send"
+                showCount
+                maxLength={200}
+                style={{ height: '10rem', resize: 'vertical' }}
+                id="mailContent"
+                value={emailList}
+                onChange={(e) => setMailContent(e.target.value)}
+                placeholder="Email Content"
+                />
+
+                <Row fullWidth justify={"space-around"}>
+                    <Col span={24}>
+                    <button fullWidth  type="submit" className="btn btn-primary input-email-send">
+                        Submit
+                    </button>
+                    
+
+                    </Col>
+                </Row>
+
+
+
+                </form>
+                </Col>
+
+
+                <Col xs={24} sm={24} md={10} lg={10} xl={10} className="input-form-email-send" >
+                <h3>Success</h3>
+                <h4>
+                Total number of recipients:{" "}
+                <span className="ml-2 text-success">
+                    0{/* {response.validEmails.length}{" "} */}
+                </span>{" "}
+                </h4>
+
+                <List
+                header={<div>Email</div>}
+                bordered
+                style={{marginTop:'2rem',color:'black', fontSize:'2rem'}}
+                dataSource={data}
+                renderItem={(item) => (
+                    <List.Item>
+                    <Typography.Text></Typography.Text> {item}
+                    </List.Item>
+                )}
+                />
+                    
+                </Col>
+
+           </Row>
+
+
+
+           <div class="row mt-5">
           <div class="col">
             <h2>Valid emails:</h2>
           </div>
@@ -186,7 +222,16 @@ function EmailSand() {
             </h4>
           </div>
         </div>
-        <table class="table table-hover">
+
+
+
+
+
+
+        <Row justify={"center"}>
+            <Col xs={24} sm={24} md={10} lg={10} xl={20}>
+
+            <table class="table table-hover">
           <thead>
             <tr>
               <th scope="col">#SL.</th>
@@ -210,8 +255,18 @@ function EmailSand() {
             </tr>
           </tbody>
         </table>
-      </div>
-    </section>
+            
+            </Col>
+
+
+        </Row>
+       
+
+
+        </Container>
+    
+    
+    </>
   );
 }
 
