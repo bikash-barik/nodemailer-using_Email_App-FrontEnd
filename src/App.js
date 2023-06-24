@@ -14,11 +14,11 @@ function App() {
   return (
     <>
       <Router>
-        <Nav />
+        {/* <Nav /> */}
         <div>
           <div>
             <Switch>
-              <Route exact path="/" component={Home} />
+              <Route exact path="/" component={Home2} />
               <Route exact path="/EmailSand" component={EmailSand} />
               <Route exact path="/EmailExtract" component={EmailExtract} />
               <Route  path="/EmailValidator" component={ValidEmailsPart} />

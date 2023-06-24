@@ -125,7 +125,7 @@ function EmailSand() {
                 action={"http://localhost:3000/demo"}
                 listType="picture"
                 required
-                style={{ width:"400px"}}
+                style={{ width: "400px" }}
                 beforeUpload={(file) => {
                   console.log(file);
                   return false;
@@ -139,7 +139,7 @@ function EmailSand() {
                   fullWidth
                   icon={<UploadOutlined />}
                 >
-                  EMAIL LIST
+                  Email List and Domain List
                 </Button>
               </Upload>
 
@@ -158,7 +158,6 @@ function EmailSand() {
               <Input.TextArea
                 className="input-email-send"
                 showCount
-                maxLength={200}
                 style={{ height: "10rem", resize: "vertical" }}
                 id="mailContent"
                 value={emailList}
@@ -188,7 +187,14 @@ function EmailSand() {
             xl={11}
             className="input-form-email-send"
           >
-            <h3>Success</h3>
+            {/* <h3>Success</h3> */}
+            <h4>
+              <span className="mr-5 h2">Success</span>
+              Total Email Send Limit:{" "}
+              <span className="ml-2 text-danger">
+                50,000{/* {response.validEmails.length}{" "} */}
+              </span>{" "}
+            </h4>
             <h4>
               Total number of recipients:{" "}
               <span className="ml-2 text-success">
