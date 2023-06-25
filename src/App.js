@@ -27,7 +27,7 @@ function App() {
 
 
             </Switch>
-
+            {/* <Home2/> */}
           </div>
         </div>
       </Router>
