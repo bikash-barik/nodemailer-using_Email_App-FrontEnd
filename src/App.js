@@ -9,6 +9,10 @@ import ValidEmailsPart from "./Componets/ValidEmailsPart";
 import DoaminCountry from "./Componets/DoaminCountry";
 import EmailExtract from "./Componets/EmailExtract";
 import Test from "./Componets/Test"
+
+import Register from "./Pages/Register";
+import Login from "./Pages/Login";
+
 function App() {
   return (
     <>
@@ -17,9 +21,14 @@ function App() {
         <div>
           <div>
             <Switch>
+
               <Route exact path="/" component={Home} />
-              <Route exact path="/EmailSand" component={EmailSand} />
+             <Route exact path="/EmailSand" component={EmailSand} />
               <Route exact path="/EmailExtract" component={EmailExtract} />
+
+              <Route path="/register" component={<Register />} />
+              <Route path="/login" component={<Login />} />
+              
               <Route  path="/EmailValidator" component={ValidEmailsPart} />
               <Route  path="/DomainCountry" component={DoaminCountry} />
               <Route  path="/test" component={Test} />
