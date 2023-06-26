@@ -23,7 +23,7 @@ function Home() {
       );
       console.log(response.data);
       setData(response.data);
-  
+
       // Send response to another API endpoint
       const otherApiConfig = {
         headers: {
@@ -46,29 +46,25 @@ function Home() {
   };
   return (
     <div className="container">
-      <div className="d-flex">
+      <div className="d-flex justify-content-between">
         <div className="form-input">
           <label htmlFor="domainList">Domain List :</label>
-          <input
-            type="file"
-            name="domainList"
-            id="domainList"
-            onChange={(event) => setDomainList(event.target.files[0])}
-          />
+          <div className="d-flex justify-content-between">
+            <input
+              type="file"
+              name="domainList"
+              id="domainList"
+              onChange={(event) => setDomainList(event.target.files[0])}
+            />
+            <button
+              onClick={handleSubmit}
+              type="submit"
+              className="btn btn-primary"
+            >
+              Submit
+            </button>
+          </div>
         </div>
-      </div>
-
-      <div className="d-flex justify-content-between">
-        <button
-          onClick={handleSubmit}
-          type="submit"
-          className="btn btn-primary"
-        >
-          Submit
-        </button>
-        <button onClick={EmailSand} className="btn btn-primary">
-          Next
-        </button>
       </div>
       <hr />
       <div class="row mt-5">

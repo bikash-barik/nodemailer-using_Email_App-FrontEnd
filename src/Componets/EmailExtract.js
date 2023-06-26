@@ -27,7 +27,7 @@ function App() {
     <div className="container mt-5">
       <form onSubmit={handleFormSubmit}>
         <input type="file" name="domainList" onChange={handleFileChange} />
-        <button type="submit">Extract Emails</button>
+        <button type="submit" className="btn btn-primary">Extract Emails</button>
       </form>
       <hr></hr>
       <table className="table table-striped-columns ">

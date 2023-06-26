@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import URLAPI from "../API/URLAPI";
 
-
 function ValidEmailsPart() {
   const [response, setResponse] = useState(null);
   const history = useHistory();
@@ -32,40 +31,29 @@ function ValidEmailsPart() {
   };
 
   const EmailSand = () => {
-    history.push("/EmailSand")
-}
+    history.push("/EmailSand");
+  };
 
   return (
     <div className="container p-5">
       <div className="d-flex">
         <div className="form-input">
           <label htmlFor="emailList">Email List </label>
-          <input
-            type="file"
-            name="emailList"
-            id="emailList"
-            onChange={handleFileUpload} 
-            // onChange={(e) => setEmailList(e.target.files[0])}
-          />
-        </div>
-        <div className="form-input">
-          <label htmlFor="domainList">
-            Domain List According to Email List{" "}
-          </label>
-          <input
-            type="file"
-            name="DomainList"
-            id="domainList"
-            // onChange={(e) => setDomainList(e.target.files[0])}
-          />
+          <div className="d-flex justify-content-between">
+            <input
+              type="file"
+              name="emailList"
+              id="emailList"
+              onChange={handleFileUpload}
+              // onChange={(e) => setEmailList(e.target.files[0])}
+            />
+
+            <button className="btn btn-primary">Validate Your Email</button>
+            {/* <button onClick={EmailSand} className="btn btn-primary">Next</button> */}
+          </div>
         </div>
       </div>
-      {/* <input type="file" onChange={handleFileUpload} /> */}
-     
-      <div className="d-flex justify-content-between">
-      <button className="btn btn-primary">Submit</button>
-      {/* <button onClick={EmailSand} className="btn btn-primary">Next</button> */}
-      </div>
+
       <hr />
       {response && (
         <div>
@@ -106,7 +94,7 @@ function ValidEmailsPart() {
                   <tr>
                     <th scope="row"> {i + 1}</th>
 
-                    <td>{email.split("@")[1 ]}</td>
+                    <td>{email.split("@")[1]}</td>
                     <td>{email}</td>
                     <td>
                       <button type="button" class="btn btn-success">

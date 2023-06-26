@@ -17,7 +17,7 @@ import DoaminCountry from '../DoaminCountry';
 import EmailExtract from '../EmailExtract';
 import EmailSand from '../EmailSand';
 import EmailValidate from '../ValidEmailsPart';
-
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 const ColorlibStepIconRoot = styled('div')(({ theme, ownerState }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? theme.palette.grey[700] : '#ccc',
   zIndex: 1,
@@ -149,9 +149,11 @@ export default function HorizontalLinearStepper() {
     <Box>
       <Box sx={{ display: 'grid', gridTemplateColumns: '1fr auto auto',marginY:"20px",marginX:"40px"}}>
         <Button
+        variant="contained"
           color="inherit"
           disabled={activeStep === 0}
           onClick={handleBack}
+          startIcon={<ArrowBackIcon />}
           sx={{
             gridColumn: '1',
             justifySelf: 'left',
@@ -160,12 +162,12 @@ export default function HorizontalLinearStepper() {
           Back
         </Button>
         {isStepOptional(activeStep) && !isStepSkipped(activeStep) && (
-          <Button color="inherit" onClick={handleSkip} sx={{ gridColumn: '2' }}>
+          <Button color="inherit" onClick={handleSkip} sx={{ gridColumn: '2' ,marginX:"5px"}} variant="contained">
             Skip
           </Button>
         )}
         {activeStep !== steps.length - 1 ? (
-          <Button onClick={handleNext} sx={{ gridColumn: '3' }}>
+          <Button onClick={handleNext} sx={{ gridColumn: '3' }} variant="contained" endIcon={<SendIcon />}>
             Next
           </Button>
         ) : (

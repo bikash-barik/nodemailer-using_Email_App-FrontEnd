@@ -172,7 +172,7 @@ function EmailSand() {
                     type="submit"
                     className="btn btn-primary input-email-send"
                   >
-                    Submit
+                    Send Email
                   </button>
                 </Col>
               </Row>

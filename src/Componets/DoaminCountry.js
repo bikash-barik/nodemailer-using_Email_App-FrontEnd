@@ -53,22 +53,24 @@ function DoaminCountry() {
         <div className="d-flex">
           <div className="form-input">
             <label htmlFor="emailList"> Domain List </label>
+            <div className="d-flex justify-content-between">
             <input
               type="file"
               name="emailList"
               id="emailList"
               onChange={handleFileChange}
             />
-          </div>
-        </div>
-        <div className="d-flex justify-content-between">
-          <button onClick={handleFormSubmit} className="btn btn-primary">
-            Submit
+            <button onClick={handleFormSubmit} className="btn btn-primary">
+            Find Country Name
           </button>
           {/* <button onClick={EmailSand} className="btn btn-primary">
             Next
           </button> */}
         </div>
+          </div>
+        </div>
+       
+          
         <hr />
 
         {filteredResults.length > 0 && (
