@@ -19,6 +19,7 @@ function App() {
           <div>
             <Switch>
               <Route exact path="/" component={Home2} />
+              <Route exact path="/AddDomain" component={Home} />
               <Route exact path="/EmailSand" component={EmailSand} />
               <Route exact path="/EmailExtract" component={EmailExtract} />
               <Route  path="/EmailValidator" component={ValidEmailsPart} />

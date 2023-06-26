@@ -12,6 +12,7 @@ import MarkEmailReadIcon from '@mui/icons-material/MarkEmailRead';
 import SendIcon from '@mui/icons-material/Send';
 import PublicIcon from '@mui/icons-material/Public';
 import { styled } from '@mui/material/styles';
+import AddDomain from '../../Pages/Home';
 import DoaminCountry from '../DoaminCountry';
 import EmailExtract from '../EmailExtract';
 import EmailSand from '../EmailSand';
@@ -75,7 +76,7 @@ ColorlibStepIcon.propTypes = {
 const stepsRender = [
   {
     label: 'Step 1',
-    content: <>Add Domain</>,
+    content: <AddDomain/>,
   },
   {
     label: 'Step 2',
@@ -145,8 +146,8 @@ export default function HorizontalLinearStepper() {
   };
 
   return (
-    <Box sx={{ margin: '20px' }}>
-      <Box sx={{ display: 'grid', gridTemplateColumns: '1fr auto auto' }}>
+    <Box>
+      <Box sx={{ display: 'grid', gridTemplateColumns: '1fr auto auto',marginY:"20px",marginX:"40px"}}>
         <Button
           color="inherit"
           disabled={activeStep === 0}
@@ -173,7 +174,7 @@ export default function HorizontalLinearStepper() {
           </Button>
         )}
       </Box>
-      <Stepper activeStep={activeStep}>
+      <Stepper activeStep={activeStep} sx={{ marginX: '200px' ,marginY:"15px"}}>
         {steps.map((label, index) => {
           const stepProps = {};
           const labelProps = {};
@@ -200,7 +201,7 @@ export default function HorizontalLinearStepper() {
         </React.Fragment>
       ) : (
         <React.Fragment>
-          <Typography sx={{ mt: 2, mb: 1 }}>
+          <Typography sx={{ mt: 10, mb: 1 }}>
             {activeStep <= 5 ? stepsRender[activeStep].content : console.log('Invalid Step')}
           </Typography>
         </React.Fragment>
